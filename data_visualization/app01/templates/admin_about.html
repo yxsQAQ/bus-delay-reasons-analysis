@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h1>About</h1>
+            <br>
+            <h4>Definition of Bus Delay Severity</h4>
+            <p>
+                In order to quantify the degree of bus delay in a systematic manner,
+                the study employs a specific mathematical formula designed to calculate the resultant delay metrics.<br>
+                Degree of delay = absolute value(Expected bus arrival time - real bus arrival time) /
+                (destination time - departure time)
+            </p>
+            <br><br>
+            <h4>Data visualization explanation</h4>
+            <ol>
+                <li>The data is collected automatically.</li>
+                <li>The presented data present the median and the mean of all collected data.</li>
+            </ol>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
+
+

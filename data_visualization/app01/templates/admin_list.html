@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <div style="margin-bottom: 10px" class="clearfix">
+            <a class="btn btn-success" href="/admin/add/">
+                <span class="glyphicon glyphicon-plus-sign OneSpace" aria-hidden="true"></span>
+                Add User
+            </a>
+
+            <div style="float: right; width: 300px;">
+                <form method="get">
+                    <div class="input-group">
+                        <input type="text" name='q' class="form-control" placeholder="Keyword"
+                               value="{{ search_data }}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-th-list OneSpace" aria-hidden="true"></span>
+                User List
+            </div>
+
+            <!-- Table -->
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Reset Password</th>
+                    <th>Operations</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for obj in queryset %}
+                    <tr>
+                        <th>{{ obj.id }}</th>
+                        <td>{{ obj.username }}</td>
+                        <td>*********</td>
+                        <td>
+                            <a href="/admin/{{ obj.id }}/reset/">Reset Password</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger btn-xs" href="/admin/{{ obj.id }}/delete/">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    <ul class='pagination'>
+        {{ page_string }}
+    </ul>
+    </div>
+{% endblock %}
